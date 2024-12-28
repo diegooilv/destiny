@@ -44,7 +44,7 @@ client.on('messageCreate', message => {
   const command = client.commands.get(commandName);
 
   try {
-    command.execute(message, args);  // Executa o comando
+    command.execute(client, message, args);  // Executa o comando
   } catch (error) {
     console.error(error);
     message.reply('Houve um erro ao tentar executar esse comando!');
