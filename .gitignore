@@ -1,0 +1,5 @@
+# Ignorar o arquivo .env que contém variáveis sensíveis como o token do bot
+.env
+
+# Ignorar a pasta node_modules (dependências instaladas via npm)
+node_modules/
