@@ -4,7 +4,7 @@ const path = require('path');
 require('dotenv').config();
 const config = require('./config.json');
 
-const key = process.env.KEYBOT;
+const token = process.env.TOKEN;
 
 const client = new Client({
   intents: [
@@ -52,4 +52,4 @@ client.on('messageCreate', message => {
 });
 
 // Login do bot com o token
-client.login(key);
+client.login(token);
