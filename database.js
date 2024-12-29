@@ -22,7 +22,31 @@ async function salvarDados(userId, variavel, valor) {
     return true;
 }
 
+// Função para somar um valor a uma variável específica de um usuário
+async function somar(userId, variavel, valorParaSomar) {
+    if (typeof valorParaSomar !== 'number' || isNaN(valorParaSomar)) {
+        throw new Error(`O valor fornecido para somar (${valorParaSomar}) não é numérico.`);
+    }
+    const valorAtual = await recuperarDados(userId, variavel) || 0; // Recupera o valor atual ou assume 0
+    const novoValor = valorAtual + valorParaSomar; // Soma o valor
+    await salvarDados(userId, variavel, novoValor); // Salva o novo valor
+    return;
+}
+
+// Função para subtrair um valor de uma variável específica de um usuário
+async function subtrair(userId, variavel, valorParaSubtrair) {
+    if (typeof valorParaSubtrair !== 'number' || isNaN(valorParaSubtrair)) {
+        throw new Error(`O valor fornecido para subtrair (${valorParaSubtrair}) não é numérico.`);
+    }
+    const valorAtual = await recuperarDados(userId, variavel) || 0; // Recupera o valor atual ou assume 0
+    const novoValor = valorAtual - valorParaSubtrair; // Subtrai o valor
+    await salvarDados(userId, variavel, novoValor); // Salva o novo valor
+    return;
+}
+
 module.exports = {
     recuperarDados,
-    salvarDados
+    salvarDados,
+    somar,
+    subtrair
 };
